@@ -1,0 +1,60 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const WHATSAPP_NUMBER = "918802509279";
+const DEFAULT_MESSAGE = "Hello! I found your website and I need assistance.";
+
+export default function WhatsAppFloat() {
+  const [hovered, setHovered] = useState(false);
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+      {/* Tooltip */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 10 }}
+            transition={{ duration: 0.2 }}
+            className="relative bg-slate-900 text-white text-sm font-medium px-4 py-2 rounded-xl shadow-xl whitespace-nowrap"
+          >
+            Chat with us on WhatsApp
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Button */}
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="relative flex items-center justify-center w-16 h-16 rounded-full shadow-2xl transition-transform duration-200 hover:scale-110 active:scale-95"
+        style={{ backgroundColor: "#25D366" }}
+      >
+        {/* Pulse ring */}
+        <span
+          className="absolute inset-0 rounded-full animate-ping opacity-30"
+          style={{ backgroundColor: "#25D366" }}
+        />
+        {/* WhatsApp SVG Icon */}
+        <svg
+          viewBox="0 0 32 32"
+          fill="white"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-8 h-8 relative z-10"
+          aria-hidden="true"
+        >
+          <path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.44.65 4.73 1.78 6.72L2 30l7.5-1.75A13.93 13.93 0 0016.002 30C23.72 30 30 23.72 30 16S23.72 2 16.002 2zm0 25.5c-2.18 0-4.22-.6-5.97-1.64l-.43-.25-4.45 1.04 1.07-4.33-.28-.45A11.44 11.44 0 014.5 16c0-6.35 5.17-11.5 11.5-11.5S27.5 9.65 27.5 16 22.35 27.5 16.002 27.5zm6.3-8.6c-.34-.17-2.02-1-2.34-1.11-.32-.12-.55-.17-.78.17-.23.34-.9 1.11-1.1 1.34-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.74-1.69-1.01-.9-1.7-2.01-1.9-2.35-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.12-.23.06-.43-.03-.6-.09-.17-.78-1.88-1.07-2.57-.28-.68-.57-.58-.78-.59H9.94c-.23 0-.6.09-.91.43-.32.34-1.2 1.17-1.2 2.86 0 1.69 1.23 3.32 1.4 3.55.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.02-.82 2.31-1.62.28-.8.28-1.48.2-1.62-.09-.14-.32-.23-.66-.4z" />
+        </svg>
+      </a>
+    </div>
+  );
+}

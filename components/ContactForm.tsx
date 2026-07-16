@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 import { motion } from "framer-motion";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,18 @@ export default function ContactForm() {
     );
     
     window.location.href = `mailto:dsccompliancezone42@gmail.com?subject=${subject}&body=${body}`;
+  };
+
+  const handleWhatsApp = () => {
+    const { name, message } = formData;
+    const text = name
+      ? `Hi, I am ${name}. ${message || "I need assistance with your services."}`
+      : message || "Hello! I found your website and I need assistance.";
+    window.open(
+      `https://wa.me/918802509279?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (
@@ -101,6 +114,17 @@ export default function ContactForm() {
           className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-primary-700 transition-all shadow-lg hover:shadow-primary-500/30 active:scale-95"
         >
           Send Inquiry <Send size={20} />
+        </button>
+
+        {/* WhatsApp Button */}
+        <button
+          type="button"
+          onClick={handleWhatsApp}
+          className="w-full flex items-center justify-center gap-2 font-bold py-4 px-6 rounded-xl transition-all shadow-md active:scale-95 text-white hover:opacity-90"
+          style={{ backgroundColor: "#25D366" }}
+        >
+          <WhatsAppIcon className="w-5 h-5" color="white" />
+          Chat on WhatsApp
         </button>
       </div>
     </motion.form>

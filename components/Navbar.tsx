@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,6 +59,16 @@ export default function Navbar() {
               <Phone size={18} />
               <span>8802509279</span>
             </Link>
+            <a
+              href="https://wa.me/918802509279?text=Hello!%20I%20found%20your%20website%20and%20I%20need%20assistance."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="flex items-center justify-center w-10 h-10 rounded-full shadow-md transition-all hover:scale-110 active:scale-95"
+              style={{ backgroundColor: "#25D366" }}
+            >
+              <WhatsAppIcon className="w-5 h-5" color="white" />
+            </a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -98,6 +109,17 @@ export default function Navbar() {
                 <Phone size={20} />
                 <span>Call: 8802509279</span>
               </Link>
+              <a
+                href="https://wa.me/918802509279?text=Hello!%20I%20found%20your%20website%20and%20I%20need%20assistance."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 text-white px-5 py-3 rounded-xl font-semibold"
+                style={{ backgroundColor: "#25D366" }}
+                onClick={() => setIsOpen(false)}
+              >
+                <WhatsAppIcon className="w-5 h-5" color="white" />
+                <span>WhatsApp Us</span>
+              </a>
             </div>
           </motion.div>
         )}
