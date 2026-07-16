@@ -1,5 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export const metadata = {
   title: "Contact Us | DSC & Compliance",
@@ -43,12 +44,29 @@ export default function ContactPage() {
                 <Phone size={24} />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Phone / WhatsApp</h4>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">Phone</h4>
                 <p className="text-slate-600">
-                  <a href="tel:8802509279" className="hover:text-primary-600 transition-colors">8802509279</a>
+                  <a href="tel:8802509279" className="hover:text-primary-600 transition-colors">+91 8802509279</a>
                 </p>
               </div>
             </div>
+
+            {/* WhatsApp Card */}
+            <a
+              href="https://wa.me/918802509279?text=Hello!%20I%20found%20your%20website%20and%20I%20need%20assistance."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:border-green-200 hover:shadow-md transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors" style={{ backgroundColor: '#dcfce7' }}>
+                <WhatsAppIcon className="w-6 h-6" color="#16a34a" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">WhatsApp</h4>
+                <p className="text-slate-600 group-hover:text-green-600 transition-colors">+91 8802509279</p>
+                <p className="text-sm text-green-600 font-medium mt-1">Chat with us instantly →</p>
+              </div>
+            </a>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center shrink-0">
